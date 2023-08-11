@@ -1,0 +1,38 @@
+{% extends '0Base.html' %}
+
+{% block title %}
+    Posts
+{% endblock %}
+
+{% block header %}
+  <h1>My posts</h1>
+{% endblock %}
+
+{% block content %}
+    <ul class="post-list">
+        {% for post in object_list %}
+        {% if post.author.id == user.id %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="card-text">
+                {% if post.author.first_name == '' %}
+                {{ post.author.username }}
+                {% else %}
+                {{ post.author.first_name }} {{ post.author.last_name }} - 
+                {% endif %}
+                <small>{{ post.created_at }}</small></p>
+              <p class="card-text">{{ post.content|slice:':50' }}...</p>
+              <a href="{% url 'post_ref' post.pk %}" class="btn btn-primary">Go!</a>
+
+              {% if user.id == post.author.id %}
+              <a href="{% url 'edit_posts' post.pk %}" class="btn btn-success">Edit</a>
+              <a href="{% url 'delete_posts' post.pk %}" class="btn btn-danger">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+          <br>
+        {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

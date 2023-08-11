@@ -1,0 +1,21 @@
+{% extends '0Base.html' %}
+
+{% block title %}
+   {{ post.title }} - Delete
+{% endblock %}
+
+{% block header %}<h1>Delete posts!</h1>{% endblock %}
+
+{% block content %}
+
+{{ post.title }}<br>
+{{ post.author.first_name }} {{ post.author.last_name }}<br>
+{{ post.content }}
+
+<div style='display: inline;'>
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Delete Post</button>
+    </form>
+</div>
+{% endblock %}

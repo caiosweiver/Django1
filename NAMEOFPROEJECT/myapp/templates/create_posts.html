@@ -1,0 +1,20 @@
+{% extends '0Base.html' %}
+
+{% block title %}
+    Creating a post
+{% endblock %}
+
+{% block header %}<h1>Create posts!</h1>{% endblock %}
+
+{% block userperms %}
+<div style='display: inline;'>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Create Post</button>
+    </form>
+</div>
+<script>
+    document.getElementById('FormID_author').value = '{{ user.id }}';
+</script>
+{% endblock %}

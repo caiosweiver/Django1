@@ -1,0 +1,17 @@
+{% extends '0Base.html' %}
+
+{% block title %}
+    {{ post.title }} - Edit
+{% endblock %}
+
+{% block header %}<h1>edit posts!</h1>{% endblock %}
+
+{% block userperms %}
+<div style='display: inline;'>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button_press">Submit edit</button>
+    </form>
+</div>
+{% endblock %}

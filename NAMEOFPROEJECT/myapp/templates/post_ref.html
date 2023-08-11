@@ -1,0 +1,16 @@
+{% extends '0Base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block header %}
+<h1>{{ post.title }}</h1>
+{% endblock %}
+
+{% block content %}
+    <small>{{ post.author.first_name }} {{ post.author.last_name }} - {{ post.created_at }}</small>
+    <hr>
+    <br>
+    <h2>{{ post.content }}</h2>
+{% endblock %}
