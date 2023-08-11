@@ -10,6 +10,7 @@
 <div style='display: inline;'>
     <form method="POST">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <button class="button_press">Submit edit</button>
     </form>

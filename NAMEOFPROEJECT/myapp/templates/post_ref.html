@@ -12,5 +12,5 @@
     <small>{{ post.author.first_name }} {{ post.author.last_name }} - {{ post.created_at }}</small>
     <hr>
     <br>
-    <h2>{{ post.content }}</h2>
+    <h2>{{ post.content|safe }}</h2>
 {% endblock %}

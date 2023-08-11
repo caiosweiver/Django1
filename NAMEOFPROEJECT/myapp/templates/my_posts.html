@@ -22,7 +22,7 @@
                 {{ post.author.first_name }} {{ post.author.last_name }} - 
                 {% endif %}
                 <small>{{ post.created_at }}</small></p>
-              <p class="card-text">{{ post.content|slice:':50' }}...</p>
+              <p class="card-text">{{ post.content|slice:':50'|safe }}...</p>
               <a href="{% url 'post_ref' post.pk %}" class="btn btn-primary">Go!</a>
 
               {% if user.id == post.author.id %}
