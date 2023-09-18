@@ -11,8 +11,9 @@
 {% block content %}
     <ul class="post-list">
         {% for post in object_list %}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
+        <div class="card" style="width: 50%; margin-left: 30%;">
+          <a href="{% url 'post_ref' post.pk %}" style="text-decoration: none; color: black;"> 
+          <div class="card-body">
               <h5 class="card-title">{{ post.title }}</h5>
               <p class="card-text">
                 {% if post.author.first_name == '' %}
@@ -22,13 +23,14 @@
                 {% endif %}
                 <small>{{ post.created_at }}</small></p>
               <p class="card-text">{{ post.content|slice:':50'|safe }}...</p>
-              <a href="{% url 'post_ref' post.pk %}" class="btn btn-primary">Go!</a>
+              
 
               {% if user.id == post.author.id %}
-              <a href="{% url 'edit_posts' post.pk %}" class="btn btn-success">Edit</a>
-              <a href="{% url 'delete_posts' post.pk %}" class="btn btn-danger">Delete</a>
+              <a href="{% url 'edit_posts' post.pk %}" class="btn btn-success">Editar</a>
+              <a href="{% url 'delete_posts' post.pk %}" class="btn btn-danger">Deletar</a>
               {% endif %}
             </div>
+          </a>
           </div>
           <br>
         {% endfor %}
